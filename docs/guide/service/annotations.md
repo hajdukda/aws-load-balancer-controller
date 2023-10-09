@@ -295,6 +295,7 @@ Health check on target groups can be configured with following annotations:
         - you can specify `tcp`, or `http` or `https`, `tcp` is the default
         - `tcp` is the default health check protocol if the service `spec.externalTrafficPolicy` is `Cluster`, `http` if `Local`
         - if the service `spec.externalTrafficPolicy` is `Local`, do **not** use `tcp` for health check
+        - in case a service exposes multiple ports using different protocols - consider splitting it into multiple services, one for each protocol, as currently setting different protocols for target groups health checks is not supported 
 
     !!!example
         ```service.beta.kubernetes.io/aws-load-balancer-healthcheck-protocol: http
